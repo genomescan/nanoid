@@ -4,23 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generate Nano ID</title>
-    <script src="https://cdn.jsdelivr.net/npm/nanoid@3.1.30/dist/nanoid.min.js"></script>
+    <script type="module">
+        import { nanoid } from 'https://cdn.jsdelivr.net/npm/nanoid@3.1.30/esm/index.browser.js';
+        window.generateNanoID = function() {
+            const id = nanoid();
+            document.getElementById('nanoid').innerText = id;
+        };
+    </script>
 </head>
 <body>
     <h1>Generate a Nano ID</h1>
     <button onclick="generateNanoID()">Generate ID</button>
     <p id="nanoid"></p>
-
-    <script>
-        function generateNanoID() {
-            if (typeof nanoid === 'function') {
-                const id = nanoid();
-                document.getElementById('nanoid').innerText = id;
-            } else {
-                console.error('Nano ID library is not loaded correctly.');
-                document.getElementById('nanoid').innerText = 'Error: Nano ID library not loaded.';
-            }
-        }
-    </script>
 </body>
 </html>
