@@ -13,8 +13,13 @@
 
     <script>
         function generateNanoID() {
-            const id = nanoid();
-            document.getElementById('nanoid').innerText = id;
+            if (typeof nanoid === 'function') {
+                const id = nanoid();
+                document.getElementById('nanoid').innerText = id;
+            } else {
+                console.error('Nano ID library is not loaded correctly.');
+                document.getElementById('nanoid').innerText = 'Error: Nano ID library not loaded.';
+            }
         }
     </script>
 </body>
